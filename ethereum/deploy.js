@@ -4,10 +4,10 @@ const compiledFactory = require("./build/CampaignFactory.json");
 // const dotenv = require ('dotenv');
 // dotenv.config();
 const provider = new HDWalletProvider(
+    'circle salute describe cricket pitch craft trash rough student actual quit segment',
+    'https://goerli.infura.io/v3/d5917935b7b34e73848b357ff50e6410'
 
-// nemonic,
-  
-  //urm
+
 );
 const web3 = new Web3(provider);
 
@@ -19,12 +19,15 @@ const deploy = async () => {
    try {
    await new web3.eth.Contract(compiledFactory.abi)
     .deploy({ data: compiledFactory.evm.bytecode.object })
-    .send({ gas: "1000", from: accounts[0] });
+    .send({  from: accounts[0] });
   } catch (error) {
     console.log(error)
   }
 
-//   console.log("Contract deployed to", result.options.address);
+
+  console.log("Contract deployed to", result.options.address);
   provider.engine.stop();
 };
 deploy();
+
+  
