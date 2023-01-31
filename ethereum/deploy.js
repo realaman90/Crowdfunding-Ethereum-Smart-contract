@@ -4,7 +4,7 @@ const compiledFactory = require("./build/CampaignFactory.json");
 // const dotenv = require ('dotenv');
 // dotenv.config();
 const provider = new HDWalletProvider(
-    'circle salute describe cricket pitch craft trash rough student actual quit segment',
+    "add nemonic",
     'https://goerli.infura.io/v3/d5917935b7b34e73848b357ff50e6410'
 
 
