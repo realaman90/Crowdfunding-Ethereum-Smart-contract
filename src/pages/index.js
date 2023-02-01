@@ -1,20 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import factory from '../../ethereum/factory'
 
 
-export default function Home() {
+function Home({ campaigns }) {
+//   const[campaigns, setCampaigns] = useState([])
+//   useEffect(()=>{
+//     async function callFactory (){
+//       const res = await factory.methods.getDeployedCampaigns().call();
+//       setCampaigns(res)
 
-  useEffect(()=>{
-    async function callFactory (){
-      const campaigns = await factory.methods.getDeployedCampaigns().call();
-      console.log(campaigns)
-
-    }
-    callFactory();
-  });
- 
+//     }
+//      callFactory();
+     
+//   },[]);
+//  console.log(campaigns)
   
   return (
     <>
@@ -24,7 +25,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     <div>TEst</div>
+     <div>{campaigns[0]}</div>
     </>
   )
 }
+
+//for serverside render
+Home.getInitialProps = async () => {
+  const campaigns = await factory.methods.getDeployedCampaigns().call();
+  return { campaigns };
+};
+
+
+export default Home;
